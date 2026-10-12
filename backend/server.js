@@ -114,11 +114,12 @@ app.post("/register", async(req,res) => {
         maxAge: 7 * 24 * 60 * 60 * 1000,
         path: "/"
         });
+        
 
         return res.status(201).json({
             message:"Register Succesful",
             token: token,
-            user:{email:email,username:name ,id:id}                                  
+            user:{email:email,username:name,id:id}                                  
         })
         
 
@@ -554,7 +555,16 @@ app.get("/:userId/friends",async (req,res)=> {
     const {userId} = req.params
 
     const result = await pool.query(
-        "select users.name, relationships.id,relationships.userId from relationships join users on relationships.userId = users.id where status = 'accepted' and (friendId = ? or userId = ?) " ,[userId,userId]
+        `SELECT users.name, users.id AS friendId, relationships.id
+   FROM relationships
+   JOIN users
+     ON users.id = CASE
+       WHEN relationships.userId = ? THEN relationships.friendId
+       ELSE relationships.userId
+     END
+   WHERE relationships.status = 'accepted'
+     AND (relationships.friendId = ? OR relationships.userId = ?)`,
+  [userId, userId, userId]
     )
 
     res.status(200).json(result)

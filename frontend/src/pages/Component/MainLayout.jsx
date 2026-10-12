@@ -16,6 +16,7 @@ const MainLayout = () => {
 
     const data = await response.json()
     setFriends(data)
+    console.log(friends)
   }
 
   useEffect(()=>{
