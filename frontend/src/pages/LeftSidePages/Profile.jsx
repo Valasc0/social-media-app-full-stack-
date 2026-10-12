@@ -379,9 +379,7 @@ import bgimg from "../../assets/bgimg.webp";
               
               
               
-              {post.postImage && (
-              <img src={`${API_URL}${post.postImage}`} alt="Post"/>
-              )}
+              
               
              {post.postImage && (
               <img src={`${API_URL}${post.postImage}`} alt="Post"></img>
