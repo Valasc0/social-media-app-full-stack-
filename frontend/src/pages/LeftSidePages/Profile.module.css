@@ -267,6 +267,16 @@
   vertical-align: middle;
 }
 
+.postContainer > img[alt="Post"] {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
 .postContainer label {
   font-weight: bold;
   vertical-align: middle;
