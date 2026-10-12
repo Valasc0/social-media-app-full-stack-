@@ -4,8 +4,8 @@
     import {Link,useNavigate,useParams} from 'react-router-dom'
     import styles from './Profile.module.css'
     import MainLayout from '../Component/MainLayout'
-    import pp from "/home/vval/Projectss/frontend/src/assets/ProfilePic.png";
-    import bgimg from "/home/vval/Projectss/frontend/src/assets/bgimg.webp";
+   import pp from "../../assets/ProfilePic.png";
+import bgimg from "../../assets/bgimg.webp";
 
 
 
