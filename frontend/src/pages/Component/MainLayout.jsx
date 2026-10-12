@@ -12,7 +12,7 @@ const MainLayout = () => {
 
   const getFriends = async () => {
 
-    const response = await fetch(`http://${API_URL}/${localStorage.getItem("ownId")}/friends`)
+    const response = await fetch(`${API_URL}/${localStorage.getItem("ownId")}/friends`)
 
     const data = await response.json()
     setFriends(data)

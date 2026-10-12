@@ -37,7 +37,7 @@ import bgimg from "../../assets/bgimg.webp";
   const [comment,setComment] = useState(null)
 
       const getUserFriend = async (id) => {
-        const response = await fetch(`http://${API_URL}/${id}/friends`)
+        const response = await fetch(`${API_URL}/${id}/friends`)
         
         const data = await response.json()
 
@@ -59,7 +59,7 @@ import bgimg from "../../assets/bgimg.webp";
         }
         
         try{
-          const response = await fetch(`http://${API_URL}/users/request/${localStorage.getItem("ownId")}/${user.id}`,{
+          const response = await fetch(`${API_URL}/users/request/${localStorage.getItem("ownId")}/${user.id}`,{
           method:"GET"
           })
 
@@ -98,7 +98,7 @@ import bgimg from "../../assets/bgimg.webp";
         return
       }
       
-      const response = await fetch(`http://${API_URL}/users/request/${user.id}/${localStorage.getItem("ownId")}`,{
+      const response = await fetch(`${API_URL}/users/request/${user.id}/${localStorage.getItem("ownId")}`,{
       method:"GET"
       })
 
@@ -174,7 +174,7 @@ import bgimg from "../../assets/bgimg.webp";
       const sendFriendRequest = async()=>{
 
         
-          const response = await fetch(`http://${API_URL}/users/request/${localStorage.getItem("ownId")}/${user.id}`,{
+          const response = await fetch(`${API_URL}/users/request/${localStorage.getItem("ownId")}/${user.id}`,{
           method:"POST"
           })
           if(response.ok){
@@ -234,7 +234,7 @@ import bgimg from "../../assets/bgimg.webp";
 
       async function Logout() {
     try {
-        await fetch(`http://${API_URL}/logout`, {
+        await fetch(`${API_URL}/logout`, {
             method: "POST",
             credentials: "include"
         });
@@ -287,7 +287,7 @@ import bgimg from "../../assets/bgimg.webp";
   }
 
   const getComments = async (postId) => {
-    const response = await fetch(`http://${API_URL}/posts/${postId}/comment`)
+    const response = await fetch(`${API_URL}/posts/${postId}/comment`)
     if(response.ok){
       const data = await response.json()
       console.log(data)
@@ -377,11 +377,11 @@ import bgimg from "../../assets/bgimg.webp";
               
               
               {post.postImage && (
-              <img src={`http://${API_URL}${post.postImage}`} alt="Post"/>
+              <img src={`${API_URL}${post.postImage}`} alt="Post"/>
               )}
               
              {post.postImage && (
-              <img src={`http://${API_URL}${post.postImage}`} alt="Post"></img>
+              <img src={`${API_URL}${post.postImage}`} alt="Post"></img>
               )}
               
               <div className={styles.postButtons}>

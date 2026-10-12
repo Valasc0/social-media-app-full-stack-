@@ -10,7 +10,7 @@ const Notifications = () => {
 
 
   const checkUserNotifications = async () => {
-    const response = await fetch(`http://${API_URL}/users/requests/${localStorage.getItem("ownId")}`,{
+    const response = await fetch(`${API_URL}/users/requests/${localStorage.getItem("ownId")}`,{
       method:"GET"
     })
 

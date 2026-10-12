@@ -16,7 +16,7 @@ const SignIn = () => {
       return
     }
    
-    const response = await fetch(`http://${API_URL}/signin`,{ 
+    const response = await fetch(`${API_URL}/signin`,{ 
       method: "POST",
       headers:{
         "Content-Type": "application/json"

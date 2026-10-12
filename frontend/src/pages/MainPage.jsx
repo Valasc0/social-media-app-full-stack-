@@ -126,7 +126,7 @@ const MainPage = () => {
   }
 
   const getComments = async (postId) => {
-    const response = await fetch(`http://${API_URL}/posts/${postId}/comment`)
+    const response = await fetch(`${API_URL}/posts/${postId}/comment`)
     if(response.ok){
       const data = await response.json()
       console.log(data)
@@ -184,7 +184,7 @@ const MainPage = () => {
             posts.map((post)=>(
             <div key={post.id} className={styles.postContainer}>
               <Link to={`/profiles/${post.name}`}>
-              <img src={post.profileImage ? `http://${API_URL}${post.profileImage}`: pp}  alt="user1pic" />  
+              <img src={post.profileImage ? `${API_URL}${post.profileImage}`: pp}  alt="user1pic" />  
               <label>{post.name}</label>                   
               </Link>
               <p>{post.description}</p>
@@ -200,7 +200,7 @@ const MainPage = () => {
 
 
               {post.postImage && (
-              <img src={`http://${API_URL}${post.postImage}`} alt="Post"></img>
+              <img src={`${API_URL}${post.postImage}`} alt="Post"></img>
               )}
               
               <div className={styles.postButtons}>

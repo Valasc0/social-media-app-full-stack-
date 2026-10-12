@@ -15,7 +15,7 @@ const Search = () => {
 
   const searchProfile= async()=>{
     
-    const res = await fetch(`http://${API_URL}/search/${searchInput}`)
+    const res = await fetch(`${API_URL}/search/${searchInput}`)
     const data = await res.json()
     setSearchResult(data)
     console.log(searchResult)
