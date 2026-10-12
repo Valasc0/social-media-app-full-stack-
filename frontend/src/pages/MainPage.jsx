@@ -215,7 +215,7 @@ const MainPage = () => {
                 <div className={styles.commentContent}>
                 {(postComments[post.id] || []).map((postComment)=> (
                   <div key={postComment.id} className={styles.commentItem}>
-                   <Link to={`/profiles/${post.name}`}> <span>{postComment.name}</span></Link>
+                   <Link to={`/profiles/${postComment.name}`}> <span>{postComment.name}</span></Link>
                     <p>{postComment.commentText}</p>
                     {localStorage.getItem("ownId") == postComment.userId ?  
                     <button onClick={()=>deleteComment(postComment.id,post.id)} className={styles.commentDeleteButton}>Delete</button>
