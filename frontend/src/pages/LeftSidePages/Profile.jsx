@@ -175,7 +175,10 @@ import bgimg from "../../assets/bgimg.webp";
 
         
           const response = await fetch(`${API_URL}/users/request/${localStorage.getItem("ownId")}/${user.id}`,{
-          method:"POST"
+          method:"POST",
+          headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
           })
           if(response.ok){
           const data = await response.json()
