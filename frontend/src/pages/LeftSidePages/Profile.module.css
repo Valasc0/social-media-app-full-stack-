@@ -641,3 +641,21 @@ color: white;
   text-decoration: none;
   cursor: pointer;
 }
+
+.postContainer > a img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.postContainer > img[alt="Post"] {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+}
