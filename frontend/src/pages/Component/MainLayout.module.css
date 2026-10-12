@@ -1,0 +1,144 @@
+/* MainLayout.module.css */
+
+:global(:root) {
+  --bg: #18191a;
+  --surface: #242526;
+  --surface-hover: #3a3b3c;
+  --border: #3e4042;
+  --text: #e4e6eb;
+  --text-muted: #b0b3b8;
+  --accent: #2d88ff;
+  --accent-hover: #1a6fe0;
+  --avatar-bg: #4e4f50;
+}
+
+:global(body) {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+:global(*),
+:global(*::before),
+:global(*::after) {
+  box-sizing: border-box;
+}
+
+/* Üst bar */
+.upContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.upContainer img {
+  height: 40px;
+  width: auto;
+  filter: brightness(0) invert(1) opacity(0.9);
+}
+
+/* Sol menü */
+.leftContainer {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  padding: 20px 16px;
+  background-color: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leftContainer a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.leftContainer a:hover {
+  background-color: var(--surface-hover);
+}
+
+/* Sağ menü */
+.rightContainer {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  width: 240px;
+  padding: 20px 16px;
+  background-color: var(--surface);
+  border-left: 1px solid var(--border);
+  color: var(--text);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.friendsHeader {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+/* Sağ menüdeki linkler: alt çizgi ve focus çizgisi yok */
+.rightContainer a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+.friendBox {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.friendBox:hover {
+  background: var(--surface-hover);
+}
+
+.friendText {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .rightContainer {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .leftContainer {
+    display: none;
+  }
+}

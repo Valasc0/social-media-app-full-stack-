@@ -1,0 +1,631 @@
+/* Renk değişkenleri ve Temel Ayarlar */
+.userInfos,
+.posts {
+  --bg: #18191a;
+  --surface: #242526;
+  --surface-hover: #3a3b3c;
+  --border: #3e4042;
+  --text: #e4e6eb;
+  --text-muted: #b0b3b8;
+  --avatar-bg: #4e4f50;
+}
+
+/* Kapağı ve Bilgileri İçeren Doğal Ana Kapsayıcı */
+.userInfos {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 60px auto 20px;
+  background-color: transparent;
+  border-bottom: 1px solid var(--border);
+  padding: 0 0 16px 0;
+  display: flex;
+  flex-direction: column; /* Yapı yukarıdan aşağıya temiz bir akışa kavuşturuldu */
+}
+.commentsBox {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.3s ease, opacity 0.3s ease;
+}
+
+.commentsBox.open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.commentsContent {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.commentsBox > * {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.commentsContent {
+  overflow: hidden;
+  min-height: 0;
+  padding: 0 12px;
+  background: #242526;
+  border-radius: 8px;
+}
+
+.commentsBox.open .commentsContent {
+  padding: 12px;
+  margin-top: 8px;
+}
+
+.commentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid #3e4042;
+}
+
+.commentItem p {
+  margin: 0;
+  color: #e4e6eb;
+  overflow-wrap: anywhere;
+}
+
+.commentItem .commentLike {
+  flex-shrink: 0;
+  margin-left: auto;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  background: #3a3b3c;
+  color: white;
+  cursor: pointer;
+}
+
+.commentItem .commentLike:hover {
+  background: #4e4f50;
+}
+
+.commentItem:last-child {
+  border-bottom: none;
+}
+
+.inputBox {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.inputBox textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: 40px;
+  max-height: 120px;
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid #3e4042;
+  border-radius: 8px;
+  background: #18191a;
+  color: #e4e6eb;
+  font: inherit;
+  outline: none;
+}
+
+.inputBox textarea:focus {
+  border-color: #2d88ff;
+}
+
+.inputBox button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background:var(--text);
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+}
+
+.inputBox button:hover {
+  background: #ffffff;
+}
+
+
+/* Kutu İçindeki Üst Kapak Görseli */
+.headerImg {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Kapak Üzerine Taşırılan Doğal Profil Resmi */
+.userInfos > img:not(.headerImg) {
+  position: absolute;
+  left: 16px;
+  top: 105px;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--avatar-bg);
+  border: 4px solid var(--bg);
+  z-index: 2;
+}
+
+/* KUSURSUZ SİMETRİ İÇİN YENİ BİLEŞEN: İsim, Buton ve Sayıları dikey eksende kusursuz ortalar */
+.infoDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Tüm elemanları (yazı, buton, sayı) dikey merkezde aynı çizgiye kilitler */
+  width: 100%;
+  margin-top: 56px; /* Profil fotoğrafının taşma payı kadar üst boşluk */
+  padding: 0 16px; /* Kenarlara simetrik iç boşluk */
+  box-sizing: border-box;
+}
+
+/* Kullanıcı Adı Başlığı */
+.userInfos h1 {
+  margin: 0 12px 0 0; /* Profil resmi boşluğu infoDetails padding'i ile dengelendiği için sol marj kaldırıldı */
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Rengi Ters Çevrilmiş Add (Ekle) Butonu */
+.addButton {
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--bg);
+  background-color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.addButton:hover {
+  background-color: #ffffff;
+}
+
+.addButton:active {
+  transform: scale(0.98);
+}
+
+/* Takipçi ve Gönderi Metin Blokları */
+.userInfos p {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 400;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* İlk istatistiği (Post) en sağ bloğa simetrik olarak yaslar */
+.userInfos p:first-of-type {
+  margin-left: auto;
+}
+
+.userInfos p + p {
+  margin-left: 16px;
+}
+
+/* Sayı Göstergeleri */
+.userInfos p label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  cursor: default;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* --- GÖNDERİLER ALANI --- */
+.posts {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Gönderi Kartı */
+.postContainer {
+  padding: 16px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  color: var(--text);
+}
+
+.postContainer > img:first-of-type {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.postContainer label {
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.postContainer p {
+  margin: 12px 0;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.postContainer > img:not(:first-of-type) {
+  display: block;
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Alt Reaksiyon Butonları */
+.postButtons {
+  display: flex;
+  gap: 4px;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.postButtons button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.postButtons button:hover {
+  background-color: var(--surface-hover);
+}
+
+.postStatus {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 18px;
+  color: #888;
+}
+
+/* --- DUYARLI EKRAN AYARLARI (Responsive) --- */
+@media (max-width: 1100px) {
+  .userInfos,
+  .posts {
+    margin-left: 240px;
+    width: calc(100% - 264px);
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .userInfos,
+  .posts {
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 24px);
+  }
+  .headerImg {
+    height: 120px;
+  }
+  .userInfos > img:not(.headerImg) {
+    top: 85px;
+    width: 68px;
+    height: 68px;
+  }
+  .infoDetails {
+    margin-top: 44px;
+    padding: 0 8px;
+  }
+  .userInfos h1 {
+    font-size: 18px;
+  }
+}
+
+.delButton {
+  background-color: transparent;
+  color: #ff4444;
+  border: 2px solid #ff4444;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.delButton:hover {
+  background-color: #ff4444;
+  color: white;
+}
+/* Button.module.css */
+
+.pendingButton,
+.unfollowButton {
+  --btn-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 110px;
+  height: 36px;
+  padding: 0 18px;
+  border-radius: var(--btn-radius);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+.commentDeleteButton {
+background: transparent;
+color: #ff5c5c;
+border: 1px solid #ff5c5c;
+border-radius: 6px;
+padding: 4px 10px;
+font-size: 12px;
+cursor: pointer;
+transition: 0.2s ease;
+}
+
+.commentDeleteButton {
+background: #ff5c5c;
+color: white;
+}
+
+.pendingButton:active,
+.unfollowButton:active {
+  transform: scale(0.97);
+}
+
+.pendingButton:focus-visible,
+.unfollowButton:focus-visible {
+  outline: 2px solid #52525b;
+  outline-offset: 3px;
+}
+
+/* Pending: bekleyen istek, koyu gri ve hafif nabız animasyonlu */
+.pendingButton {
+  background: #18181b;
+  border: 1px solid #3f3f46;
+  color: #a1a1aa;
+  cursor: default;
+}
+
+.pendingButton::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #facc15;
+  animation: pendingPulse 1.4s ease-in-out infinite;
+}
+
+.pendingButton:hover {
+  border-color: #52525b;
+  color: #d4d4d8;
+}
+
+@keyframes pendingPulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%      { opacity: 1;   transform: scale(1.1); }
+}
+
+/* Unfollow: takip ediliyor, şeffaf zemin ve kırmızı hover vurgusu */
+.unfollowButton {
+  background: transparent;
+  border: 1px solid #27272a;
+  color: #f4f4f5;
+}
+
+.unfollowButton:hover {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
+  color: #fca5a5;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pendingButton::before {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.answerButton{
+  display: none;
+}
+
+
+/* Profile.module.css */
+
+/* Profile.module.css */
+
+.answerButtonBox {
+  display: flex;               /* state ile değişebilir: flex | none */
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-left: 0px;
+  justify-content: center;
+  
+  
+}
+
+.answerText {
+  flex-basis: 100%;            /* yazıyı tam satır yapar, butonlar alt satıra geçer */
+  font-size: 16px;
+  color: #a1a1aa;
+  margin-bottom: 4px;
+  text-align: center;
+}
+.logoutButton {
+  background-color: #242526;
+  color: #e4e6eb;
+  border: 1px solid #3e4042;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.logoutButton:hover {
+  background-color: #3a3b3c;
+  border-color: #606770;
+}
+
+.logoutButton:active {
+  transform: scale(0.97);
+}
+
+.acceptButton,
+.declineButton {
+  font-size: 1.4rem;
+  display: inline-flex;
+  margin-left: 0px;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.acceptButton svg,
+.declineButton svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.acceptButton:hover,
+.declineButton:hover {
+  background: #1d1d1d;
+  color: #ffffff;
+}
+
+.acceptButton:active,
+.declineButton:active {
+  transform: scale(0.94);
+}
+
+.acceptButton:focus-visible,
+.declineButton:focus-visible {
+  outline: 2px solid #a1a1aa;
+  outline-offset: 3px;
+}
+
+.commentItem {
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px solid #3e4042;
+}
+
+.commentItem span {
+  display: block;
+  margin: 0 0 3px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #2d88ff;
+}
+
+.commentItem p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #e4e6eb;
+  overflow-wrap: anywhere;
+}
+
+.commentItem:last-child {
+  border-bottom: none;
+}
+
+.commentDeleteButton {
+  margin-top: 5px;
+  background: transparent;
+  color: #ff5c5c;
+  border: 1px solid #ff5c5c;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.commentDeleteButton:hover {
+  background: #ff5c5c;
+  color: white;
+}
+.postContainer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.postContainer a img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.postContainer a label {
+  margin: 0;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}

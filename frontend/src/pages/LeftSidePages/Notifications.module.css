@@ -1,0 +1,105 @@
+/* Renk değişkenleri ve Ana kapsayıcı */
+.container {
+  --bg: #18191a;
+  --surface: #242526;
+  --surface-hover: #3a3b3c;
+  --border: #3e4042;
+  --text: #e4e6eb;
+  --text-muted: #b0b3b8;
+  --accent: #2d88ff;
+
+  width: 100%;
+  max-width: 600px;
+  margin: 80px auto 20px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Başlık ile liste arasındaki boşluk azaltıldı */
+  color: var(--text);
+}
+
+/* Başlık Stili */
+.container h1 {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text);
+  text-align: center;
+}
+
+/* Bitişik Yapıdaki Bildirim Kutusu */
+.notificationBox {
+  width: 100%;
+  padding: 14px 16px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  margin-bottom: -1px; /* Kartların sınırlarını üst üste bindirerek bitişik yapar */
+  transition: background-color 0.15s;
+  cursor: pointer;
+}
+
+/* İlk bildirimin üst köşelerini yuvarlar */
+.notificationBox:first-of-type {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Son bildirimin alt köşelerini yuvarlar */
+.notificationBox:last-of-type {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-bottom: 0;
+}
+
+/* Bildirimin üzerine gelindiğinde */
+.notificationBox:hover {
+  background-color: var(--surface-hover);
+  position: relative; /* Kenarlıkların hover durumunda kaybolmaması için */
+  z-index: 1;
+}
+
+/* Bildirim Metni */
+.notificationBox p {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: var(--text);
+  
+}
+
+.container a{
+  text-decoration: none;
+}
+
+/* --- DUYARLI EKRAN AYARLARI (Responsive) --- */
+@media (max-width: 1100px) {
+  .container {
+    margin: 80px 0 20px 240px;
+    width: calc(100% - 240px);
+    max-width: none;
+    padding: 0 24px;
+  }
+
+  .container > * {
+    max-width: 600px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 80px 0 20px;
+    width: 100%;
+    padding: 0 12px;
+  }
+}
+
+
+.notificationText {
+  color: #b0b3b8;
+  font-size: 1.3rem;
+  padding: 50px 0;
+  text-align: center;
+}

@@ -1,0 +1,105 @@
+.container {
+  --ink: #1c1b19;
+  --paper: #faf7f0;
+  --line: #d8d2c4;
+  --accent: #5c6b4f;   /* muted olive, like an old ledger stamp */
+  --accent-ink: #f4f1e6;
+
+  width: 100%;
+  max-width: 360px;
+  margin: 64px auto;
+  padding: 40px 36px;
+  box-sizing: border-box;
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+
+.container::before {
+  content: "Create Account";
+  display: block;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-bottom: 28px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 14px;
+}
+
+.textInput {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 2px;
+  margin-bottom: 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  font: inherit;
+  font-size: 16px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.textInput::placeholder {
+  color: #9a9384;
+  font-style: italic;
+}
+
+.textInput:focus {
+  border-bottom-color: var(--accent);
+}
+
+.textInput:focus::placeholder {
+  opacity: 0.5;
+}
+
+.submitButton {
+  margin-top: 12px;
+  padding: 13px 20px;
+  background-color: var(--ink);
+  color: var(--accent-ink);
+  border: none;
+  font: inherit;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.submitButton:hover {
+  background-color: var(--accent);
+}
+
+.submitButton:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.text {
+  margin: 20px 0 0;
+  font-size: 14px;
+  color: #6b6558;
+  line-height: 1.5;
+}
+
+.text a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+.text a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 420px) {
+  .container {
+    margin: 32px 20px;
+    padding: 32px 24px;
+  }
+}
