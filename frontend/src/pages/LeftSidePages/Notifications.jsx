@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { apiFetch } from '../../../api'
+import API_URL from '../../../api'
 import styles from './Notifications.module.css'
 import MainLayout from '../Component/MainLayout'
 import { useSearchParams,Link } from 'react-router-dom'
@@ -10,7 +10,7 @@ const Notifications = () => {
 
 
   const checkUserNotifications = async () => {
-    const response = await fetch(`http://localhost:5000/users/requests/${localStorage.getItem("ownId")}`,{
+    const response = await fetch(`http://${API_URL}/users/requests/${localStorage.getItem("ownId")}`,{
       method:"GET"
     })
 

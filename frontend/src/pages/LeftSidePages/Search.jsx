@@ -4,6 +4,7 @@ import styles from './Search.module.css'
 import MainLayout from '../Component/MainLayout'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import API_URL from '../../../api'
 
 
 const Search = () => {
@@ -14,7 +15,7 @@ const Search = () => {
 
   const searchProfile= async()=>{
     
-    const res = await fetch(`http://localhost:5000/search/${searchInput}`)
+    const res = await fetch(`http://${API_URL}/search/${searchInput}`)
     const data = await res.json()
     setSearchResult(data)
     console.log(searchResult)

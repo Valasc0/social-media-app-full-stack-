@@ -1,5 +1,5 @@
 import {Link, useNavigate} from "react-router-dom"
-
+import API_URL from "../../api";
 
 import styles from "./SıgnIn.module.css"
 import { use, useState } from "react";
@@ -16,7 +16,7 @@ const SignIn = () => {
       return
     }
    
-    const response = await fetch("http://localhost:5000/signin",{ 
+    const response = await fetch(`http://${API_URL}/signin`,{ 
       method: "POST",
       headers:{
         "Content-Type": "application/json"

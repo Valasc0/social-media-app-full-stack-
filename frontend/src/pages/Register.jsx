@@ -1,9 +1,8 @@
 import { Link,useNavigate } from "react-router-dom"
 
-
-
 import styles from "./Register.module.css"
 import { useState } from "react"
+import API_URL from "../../api"
 
 const Register = () => {
   const navigate = useNavigate()
@@ -15,7 +14,7 @@ const Register = () => {
       return
     }
    
-    const response = await fetch("http://localhost:5000/register",{ 
+    const response = await fetch(`http://${API_URL}/register`,{ 
       method: "POST",
       headers:{
         "Content-Type": "application/json"
