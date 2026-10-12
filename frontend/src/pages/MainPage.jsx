@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { apiFetch } from '../../api'
+import API_URL from '../../api'
 import { useState } from 'react'
 import {Link,useNavigate} from 'react-router-dom'
 import styles from './MainPage.module.css'
 import MainLayout from './Component/MainLayout'
-import pp from '/home/vval/Projectss/frontend/src/assets/ProfilePic.png'
+import pp from "../assets/ProfilePic.png";
 
 
 const MainPage = () => {
@@ -125,7 +126,7 @@ const MainPage = () => {
   }
 
   const getComments = async (postId) => {
-    const response = await fetch(`http://localhost:5000/posts/${postId}/comment`)
+    const response = await fetch(`http://${API_URL}/posts/${postId}/comment`)
     if(response.ok){
       const data = await response.json()
       console.log(data)
@@ -183,7 +184,7 @@ const MainPage = () => {
             posts.map((post)=>(
             <div key={post.id} className={styles.postContainer}>
               <Link to={`/profiles/${post.name}`}>
-              <img src={post.profileImage ? `http://localhost:5000${post.profileImage}`: pp}  alt="user1pic" />  
+              <img src={post.profileImage ? `http://${API_URL}${post.profileImage}`: pp}  alt="user1pic" />  
               <label>{post.name}</label>                   
               </Link>
               <p>{post.description}</p>
@@ -199,7 +200,7 @@ const MainPage = () => {
 
 
               {post.postImage && (
-              <img src={`http://localhost:5000${post.postImage}`} alt="Post"></img>
+              <img src={`http://${API_URL}${post.postImage}`} alt="Post"></img>
               )}
               
               <div className={styles.postButtons}>

@@ -1,10 +1,11 @@
     import React, { useEffect, useRef, useState } from 'react'
     import { apiFetch } from "/././api";
+    import API_URL from '../../../api';
     import {Link,useNavigate,useParams} from 'react-router-dom'
     import styles from './Profile.module.css'
     import MainLayout from '../Component/MainLayout'
-    import pp from '/home/vval/Projectss/frontend/src/assets/ProfilePic.png'
-    import bgimg from '/home/vval/Projectss/frontend/src/assets/bgimg.webp'
+    import pp from "/home/vval/Projectss/frontend/src/assets/ProfilePic.png";
+    import bgimg from "/home/vval/Projectss/frontend/src/assets/bgimg.webp";
 
 
 
@@ -36,7 +37,7 @@
   const [comment,setComment] = useState(null)
 
       const getUserFriend = async (id) => {
-        const response = await fetch(`http://localhost:5000/${id}/friends`)
+        const response = await fetch(`http://${API_URL}/${id}/friends`)
         
         const data = await response.json()
 
@@ -58,7 +59,7 @@
         }
         
         try{
-          const response = await fetch(`http://localhost:5000/users/request/${localStorage.getItem("ownId")}/${user.id}`,{
+          const response = await fetch(`http://${API_URL}/users/request/${localStorage.getItem("ownId")}/${user.id}`,{
           method:"GET"
           })
 
@@ -97,7 +98,7 @@
         return
       }
       
-      const response = await fetch(`http://localhost:5000/users/request/${user.id}/${localStorage.getItem("ownId")}`,{
+      const response = await fetch(`http://${API_URL}/users/request/${user.id}/${localStorage.getItem("ownId")}`,{
       method:"GET"
       })
 
@@ -173,7 +174,7 @@
       const sendFriendRequest = async()=>{
 
         
-          const response = await fetch(`http://localhost:5000/users/request/${localStorage.getItem("ownId")}/${user.id}`,{
+          const response = await fetch(`http://${API_URL}/users/request/${localStorage.getItem("ownId")}/${user.id}`,{
           method:"POST"
           })
           if(response.ok){
@@ -233,7 +234,7 @@
 
       async function Logout() {
     try {
-        await fetch("http://localhost:5000/logout", {
+        await fetch(`http://${API_URL}/logout`, {
             method: "POST",
             credentials: "include"
         });
@@ -286,7 +287,7 @@
   }
 
   const getComments = async (postId) => {
-    const response = await fetch(`http://localhost:5000/posts/${postId}/comment`)
+    const response = await fetch(`http://${API_URL}/posts/${postId}/comment`)
     if(response.ok){
       const data = await response.json()
       console.log(data)
@@ -376,11 +377,11 @@
               
               
               {post.postImage && (
-              <img src={`http://localhost:5000${post.postImage}`} alt="Post"/>
+              <img src={`http://${API_URL}${post.postImage}`} alt="Post"/>
               )}
               
              {post.postImage && (
-              <img src={`http://localhost:5000${post.postImage}`} alt="Post"></img>
+              <img src={`http://${API_URL}${post.postImage}`} alt="Post"></img>
               )}
               
               <div className={styles.postButtons}>

@@ -1,7 +1,7 @@
-import React from 'react'
-import {Link,useNavigate, useParams} from 'react-router-dom'
+import API_URL from '../../../api'
+import {Link} from 'react-router-dom'
 import styles from './MainLayout.module.css'
-import logo from '/home/vval/Projectss/frontend/src/assets/union-b-black.svg'
+import logo from "../../assets/union-b-black.svg";
 import { useState } from 'react'
 import { useEffect } from 'react'
 const MainLayout = () => {
@@ -12,7 +12,7 @@ const MainLayout = () => {
 
   const getFriends = async () => {
 
-    const response = await fetch(`http://localhost:5000/${localStorage.getItem("ownId")}/friends`)
+    const response = await fetch(`http://${API_URL}/${localStorage.getItem("ownId")}/friends`)
 
     const data = await response.json()
     setFriends(data)
