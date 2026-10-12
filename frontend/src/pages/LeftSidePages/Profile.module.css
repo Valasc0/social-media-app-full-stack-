@@ -281,9 +281,11 @@
 .postContainer > img:not(:first-of-type) {
   display: block;
   width: 100%;
+  height: auto;
   max-height: 400px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
+  margin-top: 10px;
 }
 
 /* Alt Reaksiyon Butonları */
